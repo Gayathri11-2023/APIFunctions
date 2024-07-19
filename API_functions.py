@@ -39,7 +39,12 @@ class APIfuntions:
             response = requests.delete(delete_url)
             return response.status_code == 200
         return False
-
+   def update_data(self, id, data):
+        if self.api_status_code() == 200:
+            update_url = f"{self.url}/{id}"
+            response = requests.put(update_url, json=data)
+            return response.status_code == 200
+        return False
 
 
 url ="https://62513902977373573f4567fb.mockapi.io/pizza/pizza_names"
@@ -51,4 +56,5 @@ myapi = APIfuntions(url)
 #print(myapi.fetch_api_data_by_id(20))
 #myapi.fetch_api_all_id()
 #print(myapi.insert_data(data))
-print(myapi.delete_data(52))
+#print(myapi.delete_data(52))
+print(myapi.update_data(48, data))
